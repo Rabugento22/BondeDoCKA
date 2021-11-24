@@ -14,6 +14,7 @@ ssh node-master # Um dos nodes onde o ETCD está em execução.
 cd /etc/kubernetes/manifests
 cat etcd.yaml
 grep etcd kube-apiserver.yaml
+ETCDCTL_API=3 etcdctl snapshot --help
 
 # Com essas informaçoes, já podemos criar o nosso snapshot
 ETCDCTL_API=3 etcdctl snapshot save snap_do_gerente.db --key /etc/kubernetes/pki/apiserver-etcd-client.key --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/apiserver-etcd-client.crt
